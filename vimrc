@@ -10,6 +10,10 @@ let g:solarized_visibility="normal"
 set background=dark
 color solarized
 
+" vim on Mac may mess up with the
+" delete key, fix
+set backspace=indent,eol,start
+
 " Change map leader to ','
 let mapleader = ','
 
