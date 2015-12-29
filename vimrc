@@ -2,7 +2,7 @@ execute pathogen#infect()
 syntax enable
 
 " Color settings
-" set t_Co=256
+set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="high"
