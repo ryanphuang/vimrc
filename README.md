@@ -6,7 +6,7 @@ This contains some core Vim settings that have worked pleasantly for me for quit
 
 2. If you have a `.vimrc` and `.vim` directory in your home, make a back up:
   * `cp .vimrc .vimrc.bak`
-  * `cp -r .vim .vim.bak
+  * `cp -r .vim .vim.bak`
 
 3. Use settings from the repository:
   * `mv vimrc .vim`
