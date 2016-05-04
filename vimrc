@@ -96,9 +96,15 @@ endif
 
 " Set colorcolumn
 if exists('+colorcolumn')
-  set colorcolumn=85
+  set colorcolumn=81
+  " ColorColumn highlight seems to be messed by Solarized, reset
+	highlight ColorColumn term=reverse ctermbg=1 guibg=LightRed
+	augroup colorcolumn
+    autocmd!
+    autocmd ColorScheme solarized highlight ColorColumn term=reverse ctermbg=1 guibg=LightRed
+	augroup end
 else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>85v.\+', -1)
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
 endif
 
 " Set list special chars
