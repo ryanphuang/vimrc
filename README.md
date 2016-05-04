@@ -15,7 +15,7 @@ This contains some core Vim settings that have worked pleasantly for me for quit
 4. Synchronize the submodules in the repository:
   * `cd ~/.vim && git submodule update --init --recursive`
 
-5. Compile `YouCompleteMe` to get nice support code completion:
+5. Compile `YouCompleteMe` to get nice support for code completion:
   * This step is optional but recommended. If you do not need code completion, 
 just delete the directory `~/.vim/bundle/YouCompleteMe`.
   * To be able to compile, it depends on [CMake](https://cmake.org) and Python headers (`python-dev` package in Ubuntu)
