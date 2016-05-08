@@ -171,7 +171,7 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 " }
 
 " Vim-LaTeX {
-    let g:tex_flavor='latex'
-    let g:Imap_PlaceHolderStart='<+'
-    let g:Imap_PlaceHolderEnd='+>'
+"    let g:tex_flavor='latex'
+"    let g:Imap_PlaceHolderStart='<+'
+"    let g:Imap_PlaceHolderEnd='+>'
 " }
