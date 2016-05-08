@@ -2,13 +2,17 @@ execute pathogen#infect()
 syntax enable
 
 " Color settings
-" set t_Co=256
+set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="high"
 let g:solarized_visibility="normal"
 set background=dark
 color solarized
+
+" vim on Mac may mess up with the
+" delete key, fix
+set backspace=indent,eol,start
 
 " Change map leader to ','
 let mapleader = ','
@@ -92,9 +96,15 @@ endif
 
 " Set colorcolumn
 if exists('+colorcolumn')
-  set colorcolumn=85
+  set colorcolumn=81
+  " ColorColumn highlight seems to be messed by Solarized, reset
+	highlight ColorColumn term=reverse ctermbg=1 guibg=LightRed
+	augroup colorcolumn
+    autocmd!
+    autocmd ColorScheme solarized highlight ColorColumn term=reverse ctermbg=1 guibg=LightRed
+	augroup end
 else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>85v.\+', -1)
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
 endif
 
 " Set list special chars
