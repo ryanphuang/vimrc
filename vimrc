@@ -49,7 +49,7 @@ set splitright
 
 " Highlight current line
 set cursorline
-hi cursorline term=underline cterm=underline gui=underline
+hi cursorline term=underline cterm=underline ctermbg=NONE gui=underline
 
 " Don't tab, space!
 set tabstop=2
