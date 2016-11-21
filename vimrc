@@ -2,13 +2,13 @@ execute pathogen#infect()
 syntax enable
 
 " Color settings
-set t_Co=256
 let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+set t_Co=256
+" let g:solarized_termtrans=1
 let g:solarized_contrast="high"
 let g:solarized_visibility="normal"
-set background=dark
-color solarized
+set background=light
+colorscheme solarized
 
 " vim on Mac may mess up with the
 " delete key, fix
@@ -161,7 +161,7 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 " Buffer management {
     " This allows buffers to be hidden if you've modified a buffer.
-    set hidden
+    " set hidden
 
     nmap <leader>T :enew<CR>
     nmap <leader>l :bnext<CR>
