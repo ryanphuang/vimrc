@@ -38,7 +38,7 @@ if has("autocmd")
 endif
 
 " Enable spell-check
-" set spell spelllang=en_us
+set spell spelllang=en_us
 
 " Encoding
 let &termencoding=&encoding
@@ -57,7 +57,7 @@ set shiftwidth=2
 set expandtab
 
 " Auto indentation
-set autoindent
+" set autoindent
 
 " Search settings
 set incsearch

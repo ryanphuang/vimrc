@@ -25,7 +25,7 @@ backup()
 
 autocomplete()
 {
-  $maybe sudo apt-get install cmake python-dev
+  $maybe sudo apt-get install cmake python-dev g++
   $maybe cd ~/.vim/bundle/YouCompleteMe
   $maybe ./install.py --clang-completer
 }
