@@ -3,12 +3,12 @@ This contains some core Vim settings that have worked pleasantly for me for a wh
 
 ## Usage
 ### Automated way:
-  * `cd ~ && git clone https://github.com/stormspirit/vimrc.git`
+  * `cd ~ && git clone https://github.com/ryanphuang/vimrc.git`
   * `vimrc/setup.sh` (`vimrc/setup.sh --dry-run` to preview what does the script do)
 
 ### Manual way:
   1. Clone this repo:
-    * `cd ~ && git clone https://github.com/stormspirit/vimrc.git`
+    * `cd ~ && git clone https://github.com/ryanphuang/vimrc.git`
   2. If you have a `.vimrc` and `.vim` directory in your home, make a back up:
     * `cp .vimrc .vimrc.bak`
     * `mv .vim .vim.bak`
