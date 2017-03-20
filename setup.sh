@@ -33,8 +33,9 @@ autocomplete()
 setup()
 {
   curr="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  cdname="$(basename "$curr")"
   parent="$(dirname "$curr")"
-  if [ ! -f $curr/setup.sh -o ! -d $parent/vimrc ]; then
+  if [ ! -f $curr/setup.sh -o ! -f $parent/$cdname/vimrc ]; then
     echo "I exist in an unknown place"
     exit 1
   fi
@@ -43,7 +44,7 @@ setup()
   backup ~/.vimrc
   backup ~/.vim
   echo "Updating vimrc and vim"
-  $maybe cp -r $parent/vimrc ~/.vim
+  $maybe cp -r $parent/$cdname ~/.vim
   $maybe cp ~/.vim/vimrc ~/.vimrc
   $maybe cd ~/.vim
   echo "Updating submodules"
