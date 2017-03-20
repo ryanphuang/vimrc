@@ -39,12 +39,26 @@ setup()
     echo "I exist in an unknown place"
     exit 1
   fi
-  echo "$parent"
+  gitdir=
+  if [ -f $curr/.git ]; then
+    gitdir=$(sed -n 's/gitdir: \(.*\)/\1/p' $curr/.git)
+    echo "In a git submodule, git dir is in $gitdir"
+    if [ ! -d $gitdir ]; then
+      echo "Submodule git dir for $curr does not exist"
+      exit 1
+    fi
+  fi
   echo "Backuping vimrc and vim"
   backup ~/.vimrc
   backup ~/.vim
   echo "Updating vimrc and vim"
   $maybe cp -r $parent/$cdname ~/.vim
+  if [ -f ~/.vim/.git ]; then
+    $maybe rm ~/.vim/.git
+    echo "Copying submodule git dir from $gitdir to ~/.vim/.git"
+    $maybe cp -r $gitdir ~/.vim/.git
+    $maybe sed -i '/worktree = \(.*\)/d' ~/.vim/.git/config
+  fi
   $maybe cp ~/.vim/vimrc ~/.vimrc
   $maybe cd ~/.vim
   echo "Updating submodules"
