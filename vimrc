@@ -110,6 +110,9 @@ endif
 " Set list special chars
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
+" Use YCM for Eclim
+let g:EclimCompletionMethod = 'omnifunc'
+
 "" Setup Go highlight environment
 "filetype off
 "filetype plugin indent off
