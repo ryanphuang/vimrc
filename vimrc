@@ -110,13 +110,13 @@ endif
 " Set list special chars
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-" Setup Go highlight environment
-filetype off
-filetype plugin indent off
-set runtimepath+=/usr/local/go/misc/vim
-filetype plugin indent on
-" gofmt Go source files when they are saved.
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
+"" Setup Go highlight environment
+"filetype off
+"filetype plugin indent off
+"set runtimepath+=/usr/local/go/misc/vim
+"filetype plugin indent on
+"" gofmt Go source files when they are saved.
+"autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " C/C++ file extensions
 autocmd BufRead,BufNewFile  *.h set filetype=cpp
