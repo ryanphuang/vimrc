@@ -1,5 +1,6 @@
 #!/bin/bash
 maybe=
+confirm=0
 backup()
 {
   local src=$1
@@ -25,7 +26,11 @@ backup()
 
 autocomplete()
 {
-  $maybe sudo apt-get install cmake python-dev g++
+  if [ $confirm -eq 1 ]; then
+    $maybe sudo apt-get install -y cmake python-dev g++
+  else
+    $maybe sudo apt-get install cmake python-dev g++
+  fi
   $maybe cd ~/.vim/bundle/YouCompleteMe
   $maybe ./install.py --clang-completer
 }
@@ -63,20 +68,26 @@ setup()
   $maybe cd ~/.vim
   echo "Updating submodules"
   $maybe git submodule update --init --recursive
-  read -r -p "Setup YouCompleteMe (code completion)? [y/N] " response
-  case $response in
-    [yY]|yes|YES|Yes)
-      autocomplete
-      ;;
-    *)
-      ;;
-  esac
+  if [ $confirm -eq 1 ]; then
+    autocomplete
+  else
+    read -r -p "Setup YouCompleteMe (code completion)? [y/N] " response
+    case $response in
+      [yY]|yes|YES|Yes)
+        autocomplete
+        ;;
+      *)
+        ;;
+    esac
+  fi
   echo "Done. You can delete ~/vimrc now"
 }
-
 case $1 in
   -d|--dry-run)
     maybe=echo
+    ;;
+  -y|--yes)
+    confirm=1
     ;;
   *)
     maybe=
@@ -84,12 +95,16 @@ case $1 in
 esac
 
 echo "This will backup and update your .vimrc and .vim."
-read -r -p "Are you sure? [y/N] " response
-case $response in
-  [yY]|yes|YES|Yes)
-    setup
-    ;;
-  *)
-    exit 0
-    ;;
-esac
+if [ $confirm -eq 1 ]; then
+  setup
+else
+  read -r -p "Are you sure? [y/N] " response
+  case $response in
+    [yY]|yes|YES|Yes)
+      setup
+      ;;
+    *)
+      exit 0
+      ;;
+  esac
+fi

@@ -7,8 +7,9 @@ set t_Co=256
 " let g:solarized_termtrans=1
 let g:solarized_contrast="high"
 let g:solarized_visibility="normal"
-set background=light
-colorscheme solarized
+set background=dark
+" colorscheme solarized
+colorscheme wombat
 
 " vim on Mac may mess up with the
 " delete key, fix
