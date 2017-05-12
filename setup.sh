@@ -8,14 +8,14 @@ backup()
   if [ -f $src ]; then
     if [ -f $dest ]; then
       echo "Backup $dest exists already, aborting"
-      exit 1
+      exit 0
     else
       $maybe cp $src $dest
     fi
   elif [ -d $src ]; then
     if [ -d $dest ]; then
       echo "Backup $dest exists already, aborting"
-      exit 1
+      exit 0
     else
       $maybe mv $src $dest
     fi
