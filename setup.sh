@@ -26,10 +26,15 @@ backup()
 
 autocomplete()
 {
-  if [ $confirm -eq 1 ]; then
-    $maybe sudo apt-get install -y cmake python-dev g++
-  else
-    $maybe sudo apt-get install cmake python-dev g++
+  unamestr=`uname`
+  if [[ "$unamestr" == 'Linux' ]]; then
+    if [ $confirm -eq 1 ]; then
+      $maybe sudo apt-get install -y cmake python-dev g++
+    else
+      $maybe sudo apt-get install cmake python-dev g++
+    fi
+  elif [[ "$unamestr" == 'Darwin' ]]; then
+    $maybe brew install cmake
   fi
   $maybe cd ~/.vim/bundle/YouCompleteMe
   $maybe ./install.py --clang-completer
@@ -58,12 +63,12 @@ setup()
   backup ~/.vim
   echo "Updating vimrc and vim"
   $maybe cp -r $parent/$cdname ~/.vim
-  if [ -f ~/.vim/.git ]; then
+  #if [ -f ~/.vim/.git ]; then
     $maybe rm ~/.vim/.git
     echo "Copying submodule git dir from $gitdir to ~/.vim/.git"
     $maybe cp -r $gitdir ~/.vim/.git
-    $maybe sed -i '/worktree = \(.*\)/d' ~/.vim/.git/config
-  fi
+    $maybe sed -i '' '/worktree = \(.*\)/d' ~/.vim/.git/config
+  #fi
   $maybe cp ~/.vim/vimrc ~/.vimrc
   $maybe cd ~/.vim
   echo "Updating submodules"
@@ -82,12 +87,26 @@ setup()
   fi
   echo "Done. You can delete ~/vimrc now"
 }
+
+usage()
+{
+  echo -e "\nUsage: $0 [OPTIONS]\n"
+  echo -e "OPTIONS\n"
+  echo -e "\t-d --dry-run\t    Run the setup in a drill mode.\n"
+  echo -e "\t-y --yes\t    Confirm when there is a prompt. Useful for running the script automatically\n"
+  echo -e "\t-h --help\t    Print this message\n"
+  exit 1
+}
+
 case $1 in
   -d|--dry-run)
     maybe=echo
     ;;
   -y|--yes)
     confirm=1
+    ;;
+  -h|--help)
+    usage $0
     ;;
   *)
     maybe=
