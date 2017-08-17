@@ -63,12 +63,12 @@ setup()
   backup ~/.vim
   echo "Updating vimrc and vim"
   $maybe cp -r $parent/$cdname ~/.vim
-  #if [ -f ~/.vim/.git ]; then
+  if [ -f ~/.vim/.git ]; then
     $maybe rm ~/.vim/.git
     echo "Copying submodule git dir from $gitdir to ~/.vim/.git"
     $maybe cp -r $gitdir ~/.vim/.git
     $maybe sed -i '' '/worktree = \(.*\)/d' ~/.vim/.git/config
-  #fi
+  fi
   $maybe cp ~/.vim/vimrc ~/.vimrc
   $maybe cd ~/.vim
   echo "Updating submodules"
