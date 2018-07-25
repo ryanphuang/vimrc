@@ -8,8 +8,8 @@ set t_Co=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="normal"
 set background=dark
-" colorscheme solarized
-colorscheme wombat
+colorscheme solarized
+" colorscheme wombat
 
 " vim on Mac may mess up with the
 " delete key, fix
@@ -77,15 +77,15 @@ if has('cmdline_info')
 endif
 
 set laststatus=2
-"if has('statusline')
-"  set laststatus=2
-"
-"  set statusline=%<%f\                     " Filename
-"  set statusline+=%w%h%m%r                 " Options
-"  set statusline+=\ [%{&ff}/%Y]            " Filetype
-"  set statusline+=\ [%{getcwd()}]          " Current dir
-"  set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-"endif
+if has('statusline')
+  set laststatus=2
+
+  set statusline=%<%f\                     " Filename
+  set statusline+=%w%h%m%r                 " Options
+  set statusline+=\ [%{&ff}/%Y]            " Filetype
+  set statusline+=\ [%{getcwd()}]          " Current dir
+  set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
 
 " Window manager short-cut
 if bufwinnr(1) 
@@ -156,10 +156,13 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 " Airline {
     let g:airline_theme='badwolf'
+    let g:airline_detect_spell=0
     " Enable tabline in airline
     let g:airline#extensions#tabline#enabled = 1
     " Show just the filename
     let g:airline#extensions#tabline#fnamemod = ':t'
+    " Uncomment once powerline fonts are installed
+    " let g:airline_powerline_fonts = 1
 " }
 
 
